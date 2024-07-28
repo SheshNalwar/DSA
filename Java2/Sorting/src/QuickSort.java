@@ -1,11 +1,12 @@
 import java.util.Arrays;
 
-public  class QuickSort {
+public class QuickSort {
     public static void main(String args[]) {
-        int[] data = { 8, 7, 2, 11,10,1, 0, 9, 5,4};
+        int[] data = { 8, 7, 2, 11, 10, 1, 0, 9, 5, 4 };
         quickSort(data, 0, data.length - 1);
         System.out.println(Arrays.toString(data));
     }
+
     static int partition(int array[], int low, int high) {
         int pivot = array[high];
         int i = (low - 1);
