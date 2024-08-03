@@ -24,14 +24,6 @@ public class LinkList {
         }
         size++;
     }
-    void display(){
-        Node temp = head;
-        while (temp!=null){
-            System.out.print(temp.data+" -> ");
-            temp=temp.next;
-        }
-        System.out.print("null");
-    }
     void insertAtEnd(int data){
         Node node = new Node(data);
         if (tail==null){
@@ -57,6 +49,29 @@ public class LinkList {
         temp.next=node;
         size++;
     }
+    void deleteFirst(){
+        head=head.next;
+        if (head==null){
+            tail=null;
+        }
+        size--;
+    }
+    void deleteLast(){
+        Node temp = head;
+        for (int i = 1; i < size-1; i++) {
+            temp=temp.next;
+        }
+        tail=temp;
+        temp.next=null;
+    }
+    void display(){
+        Node temp = head;
+        while (temp!=null){
+            System.out.print(temp.data+" -> ");
+            temp=temp.next;
+        }
+        System.out.print("null");
+    }
     public static void main(String[] args) {
         LinkList ll = new LinkList();
         ll.insertAtStart(4);
@@ -64,8 +79,9 @@ public class LinkList {
         ll.insertAtStart(2);
         ll.insertAtEnd(5);
         ll.insertAtIndex(2,40);
+        ll.deleteFirst();
+        ll.deleteLast();
         ll.display();
-
     }
 
 }
