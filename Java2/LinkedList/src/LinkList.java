@@ -83,5 +83,4 @@ public class LinkList {
         ll.deleteLast();
         ll.display();
     }
-
 }
