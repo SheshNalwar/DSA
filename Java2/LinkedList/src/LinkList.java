@@ -98,15 +98,31 @@ public class LinkList {
         displayRec(temp.next);
     }
 
+//    Questions :
+    void removeDuplicates(){
+        Node node = head;
+        while (node.next!=null){
+            if (node.data==node.next.data){
+                node.next=node.next.next;
+                size--;
+            }else {
+                node=node.next;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         LinkList ll = new LinkList();
-        ll.insertAtStart(4);
+        ll.insertAtStart(3);
         ll.insertAtStart(3);
         ll.insertAtStart(2);
         ll.insertAtStart(1);
-        ll.insertRec(27,2);
-//        ll.deleteFirst();
-//        ll.deleteLast();
+        ll.insertAtStart(1);
+        ll.removeDuplicates();
         ll.displayRec();
+
+
+//        Questions:
+
     }
 }
