@@ -111,18 +111,41 @@ public class LinkList {
         }
     }
 
+    public static LinkList mergeSortedList(LinkList list1, LinkList list2){
+        Node firstHead = list1.head;
+        Node secondHead = list2.head;
+        LinkList merged = new LinkList();
+        while (firstHead!=null && secondHead!=null){
+            if (firstHead.data< secondHead.data){
+                merged.insertAtEnd(firstHead.data);
+                firstHead=firstHead.next;
+            }else {
+                merged.insertAtEnd(secondHead.data);
+                secondHead=secondHead.next;
+            }
+        }
+        while (firstHead!=null){
+            merged.insertAtEnd(firstHead.data);
+            firstHead=firstHead.next;
+        }
+        while (secondHead!=null){
+            merged.insertAtEnd(secondHead.data);
+            secondHead=secondHead.next;
+        }
+        return merged;
+    }
+
     public static void main(String[] args) {
-        LinkList ll = new LinkList();
-        ll.insertAtStart(3);
-        ll.insertAtStart(3);
-        ll.insertAtStart(2);
-        ll.insertAtStart(1);
-        ll.insertAtStart(1);
-        ll.removeDuplicates();
-        ll.displayRec();
+        LinkList first = new LinkList();
+        LinkList second = new LinkList();
+        first.insertAtEnd(1);
+        first.insertAtEnd(2);
+        first.insertAtEnd(4);
+        second.insertAtEnd(1);
+        second.insertAtEnd(3);
+        second.insertAtEnd(4);
 
-
-//        Questions:
-
+        LinkList merged = LinkList.mergeSortedList(first,second);
+        merged.display();
     }
 }
