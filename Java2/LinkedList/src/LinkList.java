@@ -5,11 +5,9 @@ public class LinkList {
     private class Node{
         private int data;
         private Node next;
-
         public Node(int data) {
             this.data = data;
         }
-
         public Node(int data, Node next) {
             this.data = data;
             this.next = next;
@@ -51,21 +49,20 @@ public class LinkList {
         size++;
     }
     void insertRec(int data, int index) {
-        head = insertRec(data, index, head);
+        insertRec(data,index,head);
     }
-    private Node insertRec(int data, int index, Node node) {
-        if (index == 0) {
-            Node temp = new Node(data, node);
-            size++;
-            return temp;
+    void insertRec(int data, int index, Node temp) {
+        if (index<=1){
+            Node node = new Node(data);
+            node.next=temp.next;
+            temp.next=node;
+            return;
         }
-        if (node == null) {
-            throw new IndexOutOfBoundsException("Index out of bounds");
+        if (temp==null){
+            System.out.println("Null");
         }
-        node.next = insertRec(data, --index, node.next);
-        return node;
+        insertRec(data,index-1,temp.next);
     }
-
     void deleteFirst(){
         head=head.next;
         if (head==null){
@@ -89,17 +86,27 @@ public class LinkList {
         }
         System.out.print("null");
     }
+    void displayRec(){
+        displayRec(head);
+        System.out.print("null");
+    }
+    void displayRec(Node temp){
+        if (temp==null){
+            return;
+        }
+        System.out.print(temp.data+" -> ");
+        displayRec(temp.next);
+    }
 
     public static void main(String[] args) {
         LinkList ll = new LinkList();
         ll.insertAtStart(4);
         ll.insertAtStart(3);
         ll.insertAtStart(2);
-        ll.insertAtEnd(5);
-        ll.insertRec(40,2);
-
+        ll.insertAtStart(1);
+        ll.insertRec(27,2);
 //        ll.deleteFirst();
 //        ll.deleteLast();
-        ll.display();
+        ll.displayRec();
     }
 }
