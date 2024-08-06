@@ -161,6 +161,25 @@ public class LinkList {
         return false;
     }
 
+    public int cycleLength(Node head) {
+        Node fast = head;
+        Node slow = head;
+        int counter = 0;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                Node temp = head;
+                do {
+                    temp = temp.next;
+                    counter++;
+                } while (temp != slow);
+                return counter;
+            }
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
         LinkList first = new LinkList();
         LinkList second = new LinkList();
