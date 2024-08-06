@@ -1,138 +1,183 @@
 public class LinkList {
     private Node head;
     private Node tail;
-    private int size=0;
-    private class Node{
+    private int size = 0;
+
+    private class Node {
         private int data;
         private Node next;
+
         public Node(int data) {
             this.data = data;
         }
+
         public Node(int data, Node next) {
             this.data = data;
             this.next = next;
         }
     }
-    void insertAtStart(int data){
+
+    void insertAtStart(int data) {
         Node node = new Node(data);
-        node.next=head;
-        head=node;
-        if (tail==null){
-            tail=head;
+        node.next = head;
+        head = node;
+        if (tail == null) {
+            tail = head;
         }
         size++;
     }
-    void insertAtEnd(int data){
+
+    void insertAtEnd(int data) {
         Node node = new Node(data);
-        if (tail==null){
+        if (tail == null) {
             insertAtStart(data);
-        }else{
-            tail.next=node;
-            tail=node;
+        } else {
+            tail.next = node;
+            tail = node;
         }
         size++;
     }
-    void insertAtIndex(int index,int data){
+
+    void insertAtIndex(int index, int data) {
         Node temp = head;
-        if (index==0){
+        if (index == 0) {
             insertAtStart(data);
         }
-        if (index==size){
+        if (index == size) {
             insertAtEnd(data);
         }
         for (int i = 1; i < index; i++) {
-            temp=temp.next;
+            temp = temp.next;
         }
         Node node = new Node(data);
-        node.next=temp.next;
-        temp.next=node;
+        node.next = temp.next;
+        temp.next = node;
         size++;
     }
+
     void insertRec(int data, int index) {
-        insertRec(data,index,head);
+        insertRec(data, index, head);
     }
+
     void insertRec(int data, int index, Node temp) {
-        if (index<=1){
+        if (index <= 1) {
             Node node = new Node(data);
-            node.next=temp.next;
-            temp.next=node;
+            node.next = temp.next;
+            temp.next = node;
             return;
         }
-        if (temp==null){
+        if (temp == null) {
             System.out.println("Null");
         }
-        insertRec(data,index-1,temp.next);
+        insertRec(data, index - 1, temp.next);
     }
-    void deleteFirst(){
-        head=head.next;
-        if (head==null){
-            tail=null;
+
+    void deleteFirst() {
+        head = head.next;
+        if (head == null) {
+            tail = null;
         }
         size--;
     }
-    void deleteLast(){
+
+    void deleteLast() {
         Node temp = head;
-        for (int i = 1; i < size-1; i++) {
-            temp=temp.next;
+        for (int i = 1; i < size - 1; i++) {
+            temp = temp.next;
         }
-        tail=temp;
-        temp.next=null;
+        tail = temp;
+        temp.next = null;
     }
-    void display(){
+
+    void display() {
         Node temp = head;
-        while (temp!=null){
-            System.out.print(temp.data+" -> ");
-            temp=temp.next;
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
         }
         System.out.print("null");
     }
-    void displayRec(){
+
+    void displayRec() {
         displayRec(head);
         System.out.print("null");
     }
-    void displayRec(Node temp){
-        if (temp==null){
+
+    void displayRec(Node temp) {
+        if (temp == null) {
             return;
         }
-        System.out.print(temp.data+" -> ");
+        System.out.print(temp.data + " -> ");
         displayRec(temp.next);
     }
 
-//    Questions :
-    void removeDuplicates(){
+    // Questions :
+    void removeDuplicates() {
         Node node = head;
-        while (node.next!=null){
-            if (node.data==node.next.data){
-                node.next=node.next.next;
+        while (node.next != null) {
+            if (node.data == node.next.data) {
+                node.next = node.next.next;
                 size--;
-            }else {
-                node=node.next;
+            } else {
+                node = node.next;
             }
         }
     }
 
-    public static LinkList mergeSortedList(LinkList list1, LinkList list2){
+    public static LinkList mergeSortedList(LinkList list1, LinkList list2) {
         Node firstHead = list1.head;
         Node secondHead = list2.head;
         LinkList merged = new LinkList();
-        while (firstHead!=null && secondHead!=null){
-            if (firstHead.data< secondHead.data){
+        while (firstHead != null && secondHead != null) {
+            if (firstHead.data < secondHead.data) {
                 merged.insertAtEnd(firstHead.data);
-                firstHead=firstHead.next;
-            }else {
+                firstHead = firstHead.next;
+            } else {
                 merged.insertAtEnd(secondHead.data);
-                secondHead=secondHead.next;
+                secondHead = secondHead.next;
             }
         }
-        while (firstHead!=null){
+        while (firstHead != null) {
             merged.insertAtEnd(firstHead.data);
-            firstHead=firstHead.next;
+            firstHead = firstHead.next;
         }
-        while (secondHead!=null){
+        while (secondHead != null) {
             merged.insertAtEnd(secondHead.data);
-            secondHead=secondHead.next;
+            secondHead = secondHead.next;
         }
         return merged;
+    }
+
+    public boolean hasCycle(Node head) {
+        Node fast = head;
+        Node slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int cycleLength(Node head) {
+        Node fast = head;
+        Node slow = head;
+        int counter = 0;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                Node temp = head;
+                do {
+                    temp = temp.next;
+                    counter++;
+                } while (temp != slow);
+                return counter;
+            }
+        }
+        return 0;
     }
 
     public static void main(String[] args) {
@@ -145,7 +190,7 @@ public class LinkList {
         second.insertAtEnd(3);
         second.insertAtEnd(4);
 
-        LinkList merged = LinkList.mergeSortedList(first,second);
+        LinkList merged = LinkList.mergeSortedList(first, second);
         merged.display();
     }
 }
