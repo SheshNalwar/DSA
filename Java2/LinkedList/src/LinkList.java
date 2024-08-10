@@ -180,17 +180,31 @@ public class LinkList {
         return 0;
     }
 
+    public int middleNode(Node head){
+        Node fast = head;
+        Node slow = head;
+        while (fast!=null && fast.next!=null) {
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return slow.data;
+    }
     public static void main(String[] args) {
         LinkList first = new LinkList();
         LinkList second = new LinkList();
         first.insertAtEnd(1);
         first.insertAtEnd(2);
         first.insertAtEnd(4);
+        first.insertAtEnd(5);
+        first.insertAtEnd(6);
+        first.insertAtEnd(7);
         second.insertAtEnd(1);
         second.insertAtEnd(3);
         second.insertAtEnd(4);
-
-        LinkList merged = LinkList.mergeSortedList(first, second);
-        merged.display();
+        int middle = first.middleNode(first.head);
+        first.display();
+        System.out.println(middle);
+        // LinkList merged = LinkList.mergeSortedList(first, second);
+        // merged.display();
     }
 }
