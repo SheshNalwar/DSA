@@ -1,21 +1,12 @@
 public class DoublyLinkList {
     private Node head;
-    private int size=0;
+    protected int size=0;
     private class Node{
         private int data;
         private Node next;
         private  Node prev;
         public Node(int data) {
             this.data = data;
-        }
-        public Node(int data, Node next) {
-            this.data = data;
-            this.next = next;
-        }
-        public Node(int data, Node next, Node prev) {
-            this.data = data;
-            this.next = next;
-            this.prev = prev;
         }
     }
     void insertAtStart(int data){
