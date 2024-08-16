@@ -184,6 +184,18 @@ public class LinkList {
         }
         return slow.data;
     }
+
+    public void recursivereverseLL(Node node){
+        if (node==tail){
+            head=tail;
+            return;
+        }
+        recursivereverseLL(node.next);
+        tail.next=node;
+        tail=node;
+        tail.next=null;
+    }
+
     public static void main(String[] args) {
         LinkList first = new LinkList();
         LinkList second = new LinkList();
@@ -196,9 +208,15 @@ public class LinkList {
         second.insertAtEnd(1);
         second.insertAtEnd(3);
         second.insertAtEnd(4);
-        int middle = first.middleNode(first.head);
+//        int middle = first.middleNode(first.head);
+        System.out.println("Before Reversing : ");
         first.display();
-        System.out.println(middle);
+        first.recursivereverseLL(first.head);
+        System.out.println();
+        System.out.println("After Reversing : ");
+        first.display();
+//        System.out.println(middle);
+
         // LinkList merged = LinkList.mergeSortedList(first, second);
         // merged.display();
     }
