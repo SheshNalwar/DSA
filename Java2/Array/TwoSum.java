@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class TwoSum {
     public static void main(String[] args) {
         int arr[] = { 1, 2, 3, 4, 5 };
-        System.out.println("Indices are : "+Arrays.toString(twoSum(arr, 7)));
+        System.out.println("Indices are : "+Arrays.toString(twoSumOptimized(arr, 7)));
     }
 
     public static int[] twoSum(int arr[], int target) {
@@ -24,5 +24,20 @@ public class TwoSum {
             }
         }
         return new int[] {};
+    }
+    public static int[] twoSumOptimized(int arr[],int target){
+        int left = 0;
+        int right = arr.length-1;
+        while (left<right){
+            int sum = arr[left]+arr[right];
+            if (sum==target){
+                return new int[]{left+1,right+1};
+            }else if (sum<=target){
+                left++;
+            }else {
+                right--;
+            }
+        }
+        return new int[0];
     }
 }
