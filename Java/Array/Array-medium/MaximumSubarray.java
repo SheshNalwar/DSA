@@ -12,6 +12,8 @@ Explanation: The subarray [4,-1,2,1] has the largest sum 6.
 /**
  * MaximumSubarray
  */
+
+// Kadane's Algorithm
 public class MaximumSubarray {
 
     public static void main(String[] args) {
