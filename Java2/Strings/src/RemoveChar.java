@@ -1,17 +1,27 @@
 public class RemoveChar {
     public static void main(String[] args) {
-        remove("","baccad");
+//        remove("","baccad");
+        remove2("baccad");
     }
-    static void remove(String p, String up){
+    static void remove2(String name){
+        String ans = "";
+        for (int i = 0; i < name.length(); i++) {
+            if (name.charAt(i)!='a'){
+                ans+=name.charAt(i);
+            }
+        }
+        System.out.println(ans);
+    }
+    static void recurseRemove(String p, String up){
         if (up.isEmpty()){
             System.out.println(p);
             return;
         }
         char ch = up.charAt(0);
         if (ch=='a'){
-            remove(p,up.substring(1));
+            recurseRemove(p,up.substring(1));
         }else {
-            remove(p+ch,up.substring(1));
+            recurseRemove(p+ch,up.substring(1));
         }
     }
 }
