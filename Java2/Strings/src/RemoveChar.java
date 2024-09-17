@@ -1,16 +1,16 @@
 public class RemoveChar {
     public static void main(String[] args) {
-//        remove("","baccad");
-        remove2("baccad");
+        recurseRemove("","baccad");
+//        System.out.println(remove2("baccad"));
     }
-    static void remove2(String name){
+    static String remove2(String name){
         String ans = "";
         for (int i = 0; i < name.length(); i++) {
             if (name.charAt(i)!='a'){
                 ans+=name.charAt(i);
             }
         }
-        System.out.println(ans);
+        return ans;
     }
     static void recurseRemove(String p, String up){
         if (up.isEmpty()){
