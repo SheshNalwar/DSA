@@ -18,6 +18,7 @@ public class LongestCommonPrefix {
 
     public static void main(String[] args) {
         String strs[] = { "club", "clap", "clove" };
+        System.out.println(longestCommonPrefix(strs));
     }
 
     public static String longestCommonPrefix(String[] strs) {
