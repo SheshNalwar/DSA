@@ -1,5 +1,8 @@
 import java.util.Arrays;
 
+// time complexity : O(NlogN)
+// space complexity : O(N)
+
 public class MergeSort {
     public static void main(String[] args) {
         int arr[] = { 64, 34, 25, 12, 22 };
