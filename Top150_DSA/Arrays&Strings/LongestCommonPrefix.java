@@ -11,6 +11,7 @@ public class LongestCommonPrefix {
         StringBuilder str = new StringBuilder();
 
         Arrays.sort(strs);
+        // After sorting array will be ["flight", "flow", "flower"]
         char[] first = strs[0].toCharArray();
         char[] last = strs[strs.length - 1].toCharArray();
 
