@@ -1,11 +1,7 @@
 /*
  * 169. Majority Element
-Solved
-Easy
-Topics
-Companies
-Given an array nums of size n, return the majority element.
 
+Given an array nums of size n, return the majority element.
 The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
 
 Example 1:
@@ -20,7 +16,7 @@ Output: 2
 
 public class MajorityElement {
     public static void main(String[] args) {
-        int[] nums = { 3, 2, 3 };
+        int[] nums = { 3, 2, 3, 2, 3 };
         System.out.println(majorityElement(nums));
     }
 
