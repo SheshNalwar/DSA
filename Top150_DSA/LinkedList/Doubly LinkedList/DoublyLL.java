@@ -106,6 +106,10 @@ public class DoublyLL {
         }
     }
 
+    public void deleteByValue(int val) {
+
+    }
+
     public void display() {
         Node temp = head;
         while (temp != null) {
