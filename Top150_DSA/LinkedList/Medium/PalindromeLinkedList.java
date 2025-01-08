@@ -52,6 +52,53 @@ public class PalindromeLinkedList {
         System.out.println();
     }
 
+    // Optimized appraoch
+    public static boolean optimal(Node head) {
+
+        if (head == null || head.next == null) {
+            return true;
+        }
+
+        Node slow = head;
+        Node fast = head;
+
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        Node newHead = reverse(slow.next);
+
+        Node first = head;
+        Node second = newHead;
+        while (second != null) {
+            if (first.data != second.data) {
+                reverse(newHead);
+                return false;
+            }
+
+            first = first.next;
+            second = second.next;
+        }
+
+        reverse(newHead);
+        return true;
+    }
+
+    public static Node reverse(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        Node newhead = reverse(head.next);
+
+        Node front = head.next;
+        front.next = head;
+        head.next = null;
+
+        return newhead;
+    }
+
     public static void main(String[] args) {
         PalindromeLinkedList list = new PalindromeLinkedList();
         // Create a linked list with
@@ -67,7 +114,7 @@ public class PalindromeLinkedList {
         printLinkedList(head);
 
         // Check if the linked list is a palindrome
-        if (bruteForce(head)) {
+        if (optimal(head)) {
             System.out.println("The linked list is a palindrome.");
         } else {
             System.out.println("The linked list is not a palindrome.");
