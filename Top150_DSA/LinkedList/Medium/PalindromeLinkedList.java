@@ -64,7 +64,7 @@ public class PalindromeLinkedList {
 
         while (fast.next != null && fast.next.next != null) {
             slow = slow.next;
-            fast = fast.next;
+            fast = fast.next.next;
         }
 
         Node newHead = reverse(slow.next);
