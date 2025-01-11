@@ -1,3 +1,4 @@
+import java.util.Stack;
 
 public class ReverseLinkedList {
     class Node {
@@ -13,6 +14,27 @@ public class ReverseLinkedList {
             this.data = data;
             this.next = null;
         }
+    }
+
+    // reverse using stack
+    public static Node reverse(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        Stack<Integer> st = new Stack<>();
+        Node temp = head;
+        while (temp != null) {
+            st.push(temp.data);
+            temp = temp.next;
+        }
+
+        temp = head;
+        while (temp != null) {
+            temp.data = st.pop();
+            temp = temp.next;
+        }
+
+        return head;
     }
 
     // Using recursion:- Time Complexity - O(N)
@@ -47,7 +69,7 @@ public class ReverseLinkedList {
         head.next.next.next = obj.new Node(4);
         head.next.next.next.next = obj.new Node(5);
 
-        Node newHead = reverseLL(head);
+        Node newHead = reverse(head);
         print(newHead);
 
     }
