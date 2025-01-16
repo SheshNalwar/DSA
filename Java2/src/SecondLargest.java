@@ -18,5 +18,18 @@ public class SecondLargest {
         }
         return secondMax;
     }
+    static int secondLargestBetter(int ar[]){
+        int max = 0;
+        int secondMax = 0;
+        for (int i = 0; i < ar.length; i++) {
+            if (ar[i]>max){
+                secondMax=max;
+                max=ar[i];
+            } else if (ar[i]<max && ar[i]>secondMax) {
+                secondMax=ar[i];
+            }
+        }
+        return secondMax;
+    }
 
 }
