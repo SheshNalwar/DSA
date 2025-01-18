@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.Arrays;
 
 public class TwoSum {
@@ -7,7 +6,6 @@ public class TwoSum {
         System.out.println(Arrays.toString(twoSum(ar,6)));
     }
     static int[] twoSum(int ar[],int target){
-        int sum = 0;
         for (int i = 0; i < ar.length; i++) {
             for (int j = i+1; j < ar.length; j++) {
                 if (ar[i]+ar[j]==target){
