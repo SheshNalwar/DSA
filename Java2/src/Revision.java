@@ -4,10 +4,11 @@ public class Revision {
     public static void main(String[] args) {
         int array[]={1,2,3,4,5};
         int array2[]={1,2,3,5,4};
+        int array3[]={2,2,1};
         String s = "fried";
         String t = "fired";
 //        System.out.println(linearSearch(array,4));
-//        System.out.println(sortedorNotArray(array));
+//        System.out.println(sortedorNotArray(array2));
 //        System.out.println(Arrays.toString(reverseArray(array)));
 //        System.out.println(isAnagram(s,t));
 
