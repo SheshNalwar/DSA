@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class Revision {
     public static void main(String[] args) {
@@ -11,6 +12,7 @@ public class Revision {
 //        System.out.println(sortedorNotArray(array2));
 //        System.out.println(Arrays.toString(reverseArray(array)));
 //        System.out.println(isAnagram(s,t));
+        System.out.println(containsDuplicate(array));
 
     }
     static int linearSearch(int ar[],int target){
@@ -48,5 +50,14 @@ public class Revision {
         Arrays.sort(sChars);
         Arrays.sort(tChars);
         return Arrays.equals(sChars, tChars);
+    }
+    static  boolean containsDuplicate(int ar[]){
+        for (int i = 0; i < ar.length; i++) {
+            for (int j = 0; j < ar.length; j++) {
+                if (i==j)continue;
+                if (ar[i]==ar[j])return true;
+            }
+        }
+        return false;
     }
 }
