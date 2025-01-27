@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Stack;
 
 public class Revision {
     public static void main(String[] args) {
@@ -12,7 +13,8 @@ public class Revision {
 //        System.out.println(sortedorNotArray(array2));
 //        System.out.println(Arrays.toString(reverseArray(array)));
 //        System.out.println(isAnagram(s,t));
-        System.out.println(containsDuplicate(array));
+//        System.out.println(containsDuplicate(array));
+        System.out.println(validParentheses("()[]{]"));
 
     }
     static int linearSearch(int ar[],int target){
@@ -44,14 +46,14 @@ public class Revision {
         }
         return ar;
     }
-    static  boolean isAnagram(String s, String t) {
+    static boolean isAnagram(String s, String t) {
         char[] sChars = s.toCharArray();
         char[] tChars = t.toCharArray();
         Arrays.sort(sChars);
         Arrays.sort(tChars);
         return Arrays.equals(sChars, tChars);
     }
-    static  boolean containsDuplicate(int ar[]){
+    static boolean containsDuplicate(int ar[]){
         for (int i = 0; i < ar.length; i++) {
             for (int j = 0; j < ar.length; j++) {
                 if (i==j)continue;
@@ -59,5 +61,27 @@ public class Revision {
             }
         }
         return false;
+    }
+    static boolean validParentheses(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(' || c == '[' || c == '{') {
+                stack.push(c);
+            } else if (c == ')' || c == ']' || c == '}') {
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                char top = stack.peek();
+                if ((c == ')' && top == '(') ||
+                        (c == ']' && top == '[') ||
+                        (c == '}' && top == '{')) {
+                    stack.pop();
+                } else {
+                    return false;
+                }
+            }
+        }
+       return stack.isEmpty();
     }
 }
