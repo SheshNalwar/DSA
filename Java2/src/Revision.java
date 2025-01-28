@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Stack;
 
 public class Revision {
@@ -9,13 +8,7 @@ public class Revision {
         int array3[]={2,2,1};
         String s = "fried";
         String t = "fired";
-//        System.out.println(linearSearch(array,4));
-//        System.out.println(sortedorNotArray(array2));
-//        System.out.println(Arrays.toString(reverseArray(array)));
-//        System.out.println(isAnagram(s,t));
-//        System.out.println(containsDuplicate(array));
-        System.out.println(validParentheses("()[]{]"));
-
+        System.out.println(palindromeString("racecad"));
     }
     static int linearSearch(int ar[],int target){
         for (int i = 0; i < ar.length; i++) {
@@ -83,5 +76,16 @@ public class Revision {
             }
         }
        return stack.isEmpty();
+    }
+    static boolean palindromeString(String s){
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length()/2; i++) {
+            stack.push(s.charAt(i));
+        }
+        int start = s.length()%2==0 ? s.length()/2 : (s.length()/2)+1;
+        for (int i = start; i < s.length(); i++) {
+            if (stack.peek()==s.charAt(i))stack.pop();
+        }
+        return stack.isEmpty();
     }
 }
