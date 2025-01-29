@@ -8,7 +8,7 @@ public class Revision {
         int array3[]={2,2,1};
         String s = "fried";
         String t = "fired";
-        System.out.println(palindromeString("racecad"));
+        System.out.println(palindromeStringPointers("abba"));
     }
     static int linearSearch(int ar[],int target){
         for (int i = 0; i < ar.length; i++) {
@@ -87,5 +87,16 @@ public class Revision {
             if (stack.peek()==s.charAt(i))stack.pop();
         }
         return stack.isEmpty();
+    }
+    static boolean palindromeStringPointers(String s){
+        int start = 0;
+        int end = s.length()-1;
+        while (start<end){
+            if (s.charAt(start)==s.charAt(end)){
+                start++;
+                end--;
+            }else return false;
+        }
+        return true;
     }
 }
