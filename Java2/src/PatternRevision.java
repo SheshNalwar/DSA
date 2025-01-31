@@ -1,6 +1,6 @@
 public class PatternRevision {
     public static void main(String[] args) {
-        pattern10(5);
+        pattern11(5);
     }
     static void pattern1(int n){
         for (int i = 0; i < n; i++) {
@@ -96,6 +96,14 @@ public class PatternRevision {
             for (int j = 0; j <=i; j++) {
                 System.out.print(num+" ");
                 num++;
+            }
+            System.out.println();
+        }
+    }
+    static void pattern11(int n){
+        for(int i = 0;i<n;i++){
+            for (char ch2 = 'a';ch2<='a'+i;ch2++){
+                System.out.print(ch2+" ");
             }
             System.out.println();
         }
