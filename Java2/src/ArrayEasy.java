@@ -1,7 +1,13 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class ArrayEasy {
     public static void main(String[] args) {
-        int array[]={1,2,5,7,7,8};
-        secondLargest(array);
+        int array[]={1,2,3,4,5,6,7};
+//        int duplicates[]={1,1,1,2,2,3,3,3,3,4,4};
+//        System.out.println(removeDuplicates(duplicates));
+//        System.out.println(Arrays.toString(leftRotateArray(array)));
+        System.out.println(rotateByK(array,2));
     }
     static int largest(int ar[]){
         int largest = Integer.MIN_VALUE;
@@ -38,5 +44,29 @@ public class ArrayEasy {
         System.out.println("Second Largest "+secondLargest);
         System.out.println("Second Smallest "+secondSmallest);
     }
-
+    static ArrayList<Integer> removeDuplicates(int ar[]){
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        for (int i = 0; i < ar.length; i++) {
+            if (!arrayList.contains(ar[i]))arrayList.add(ar[i]);
+        }
+        return arrayList;
+    }
+    static int[] leftRotateArray(int ar[]){
+        int temp = ar[0];
+        for (int i = 0; i < ar.length-1; i++) {
+            ar[i]=ar[i+1];
+        }
+        ar[ar.length-1]=temp;
+        return ar;
+    }
+    static ArrayList<Integer> rotateByK(int ar[],int k){
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        for (int i = ar.length-k; i < ar.length ; i++) {
+            arrayList.add(ar[i]);
+        }
+        for (int i = 0; i < ar.length-k ; i++) {
+            arrayList.add(ar[i]);
+        }
+        return arrayList;
+    }
 }
