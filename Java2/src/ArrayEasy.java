@@ -1,19 +1,8 @@
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 
 public class ArrayEasy {
-//    Declarations
-    static ArrayList<Integer> arrayList = new ArrayList<>();
-    static HashMap<Integer,Integer> hashMap = new HashMap<>();
-    static int array[]={1,2,3,4,5};
-    static int array2[]={2,3,4,4,5};
-    static int appears[]={2,2,1};
-    static int zeroes[]={1 ,0 ,2 ,3 ,0 ,4 ,0 ,1};
-    static int duplicates[]={1,1,1,2,2,3,3,3,3,4,4};
-
-//    Main
     public static void main(String[] args) {
+        System.out.println(consecutiveOnes(D.ones));
 
     }
 
@@ -55,9 +44,9 @@ public class ArrayEasy {
     }
     static ArrayList<Integer> removeDuplicates(int ar[]){
         for (int i = 0; i < ar.length; i++) {
-            if (!arrayList.contains(ar[i]))arrayList.add(ar[i]);
+            if (!D.IntArrayList.contains(ar[i]))D.IntArrayList.add(ar[i]);
         }
-        return arrayList;
+        return D.IntArrayList;
     }
     static int[] leftRotateArray(int ar[]){
         int temp = ar[0];
@@ -69,12 +58,12 @@ public class ArrayEasy {
     }
     static ArrayList<Integer> rotateByK(int ar[],int k){
         for (int i = ar.length-k; i < ar.length ; i++) {
-            arrayList.add(ar[i]);
+            D.IntArrayList.add(ar[i]);
         }
         for (int i = 0; i < ar.length-k ; i++) {
-            arrayList.add(ar[i]);
+            D.IntArrayList.add(ar[i]);
         }
-        return arrayList;
+        return D.IntArrayList;
     }
     static int[] rotateByK2(int ar[],int k){
         //TODO : incomplete
@@ -89,10 +78,10 @@ public class ArrayEasy {
     }
     static int[] moveAllZeros(int ar[]){
         for (int i = 0; i < ar.length; i++) {
-            if (ar[i]!=0)arrayList.add(ar[i]);
+            if (ar[i]!=0)D.IntArrayList.add(ar[i]);
         }
-        for (int i = arrayList.size(); i <ar.length ; i++) {
-            arrayList.add(0);
+        for (int i = D.IntArrayList.size(); i <ar.length ; i++) {
+            D.IntArrayList.add(0);
         }
         return ar;
     }
@@ -102,5 +91,14 @@ public class ArrayEasy {
         }
         return -1;
     }
-
+    static int consecutiveOnes(int ar[]){
+        int count = 0;
+        int maxCount = 0;
+        for (int i = 0; i < ar.length; i++) {
+            if (ar[i]==1)count++;
+            else count=0;
+            maxCount=Math.max(count,maxCount);
+        }
+        return maxCount;
+    }
 }
