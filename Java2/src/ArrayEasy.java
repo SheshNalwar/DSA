@@ -2,8 +2,7 @@ import java.util.ArrayList;
 
 public class ArrayEasy {
     public static void main(String[] args) {
-        System.out.println(consecutiveOnes(D.ones));
-
+        System.out.println(appearsOnce(D.appears));
     }
 
 //    Methods
@@ -44,9 +43,9 @@ public class ArrayEasy {
     }
     static ArrayList<Integer> removeDuplicates(int ar[]){
         for (int i = 0; i < ar.length; i++) {
-            if (!D.IntArrayList.contains(ar[i]))D.IntArrayList.add(ar[i]);
+            if (!D.intArrayList.contains(ar[i]))D.intArrayList.add(ar[i]);
         }
-        return D.IntArrayList;
+        return D.intArrayList;
     }
     static int[] leftRotateArray(int ar[]){
         int temp = ar[0];
@@ -58,12 +57,12 @@ public class ArrayEasy {
     }
     static ArrayList<Integer> rotateByK(int ar[],int k){
         for (int i = ar.length-k; i < ar.length ; i++) {
-            D.IntArrayList.add(ar[i]);
+            D.intArrayList.add(ar[i]);
         }
         for (int i = 0; i < ar.length-k ; i++) {
-            D.IntArrayList.add(ar[i]);
+            D.intArrayList.add(ar[i]);
         }
-        return D.IntArrayList;
+        return D.intArrayList;
     }
     static int[] rotateByK2(int ar[],int k){
         //TODO : incomplete
@@ -78,10 +77,10 @@ public class ArrayEasy {
     }
     static int[] moveAllZeros(int ar[]){
         for (int i = 0; i < ar.length; i++) {
-            if (ar[i]!=0)D.IntArrayList.add(ar[i]);
+            if (ar[i]!=0)D.intArrayList.add(ar[i]);
         }
-        for (int i = D.IntArrayList.size(); i <ar.length ; i++) {
-            D.IntArrayList.add(0);
+        for (int i = D.intArrayList.size(); i <ar.length ; i++) {
+            D.intArrayList.add(0);
         }
         return ar;
     }
@@ -100,5 +99,17 @@ public class ArrayEasy {
             maxCount=Math.max(count,maxCount);
         }
         return maxCount;
+    }
+    static int appearsOnce(int ar[]){
+        for (int i = 0; i < ar.length; i++) {
+            if (!D.intHashMap.containsKey(ar[i]))D.intHashMap.put(ar[i],1);
+            else D.intHashMap.put(ar[i], D.intHashMap.get(ar[i]) + 1);
+        }
+        for (int key : D.intHashMap.keySet()) {
+            if (D.intHashMap.get(key) == 1) {
+                return key;
+            }
+        }
+        return -1;
     }
 }
