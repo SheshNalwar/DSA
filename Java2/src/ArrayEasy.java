@@ -3,52 +3,55 @@ import java.util.Arrays;
 
 public class ArrayEasy {
     public static void main(String[] args) {
-
+        for(int num:D.ar2){
+            int current = D.intHashMap.getOrDefault(num,1);
+            System.out.println(current);
+        }
     }
 
 //    Methods
-    static int largest(int ar[]){
+    static int largest(int[] ar){
         int largest = Integer.MIN_VALUE;
-        for (int i = 0; i < ar.length; i++) {
-            if(ar[i]>largest)largest=ar[i];
+        for (int j : ar) {
+            if (j > largest) largest = j;
         }
         return largest;
     }
-    static boolean sortedOrNot(int ar[]){
+    static boolean sortedOrNot(int[] ar){
         for (int i = 0; i < ar.length-1; i++) {
             if (ar[i]>ar[i+1])return false;
         }
         return true;
     }
-    static int linearSearch(int ar[],int key){
+    static int linearSearch(int[] ar, int key){
         for (int i = 0; i < ar.length-1; i++) {
             if (ar[i]==key)return i;
         }
         return -1;
     }
-    static void secondLargest(int ar[]){
+    static void secondLargest(int[] ar){
         int largest = Integer.MIN_VALUE;
         int secondLargest = Integer.MIN_VALUE;
         int smallest = Integer.MAX_VALUE;
         int secondSmallest = Integer.MAX_VALUE;
-        for (int i = 0; i < ar.length; i++) {
-            if (ar[i]>largest)largest=ar[i];
-            if (ar[i]<smallest)smallest=ar[i];
+        for (int k : ar) {
+            if (k > largest) largest = k;
+            if (k < smallest) smallest = k;
         }
-        for (int i = 0; i < ar.length; i++) {
-            if (ar[i]>secondLargest && ar[i]!=largest)secondLargest=ar[i];
-            if (ar[i]<secondSmallest && ar[i]!=smallest)secondSmallest=ar[i];
+        for (int j : ar) {
+            if (j > secondLargest && j != largest) secondLargest = j;
+            if (j < secondSmallest && j != smallest) secondSmallest = j;
         }
         System.out.println("Second Largest "+secondLargest);
         System.out.println("Second Smallest "+secondSmallest);
     }
-    static ArrayList<Integer> removeDuplicates(int ar[]){
-        for (int i = 0; i < ar.length; i++) {
-            if (!D.intArrayList.contains(ar[i]))D.intArrayList.add(ar[i]);
+    static ArrayList<Integer> removeDuplicates(int[] ar){
+        for (int j : ar) {
+            if (!D.intArrayList.contains(j)) D.intArrayList.add(j);
         }
         return D.intArrayList;
     }
-    static int[] leftRotateArray(int ar[]){
+    static int[] leftRotateArray(int[] ar){
         int temp = ar[0];
         for (int i = 0; i < ar.length-1; i++) {
             ar[i]=ar[i+1];
@@ -56,7 +59,7 @@ public class ArrayEasy {
         ar[ar.length-1]=temp;
         return ar;
     }
-    static ArrayList<Integer> rotateByK(int ar[],int k){
+    static ArrayList<Integer> rotateByK(int[] ar, int k){
         for (int i = ar.length-k; i < ar.length ; i++) {
             D.intArrayList.add(ar[i]);
         }
@@ -65,46 +68,35 @@ public class ArrayEasy {
         }
         return D.intArrayList;
     }
-    static int[] rotateByK2(int ar[],int k){
-        //TODO : incomplete
-        int temp[]=new int[k];
-        for (int i = ar.length-k; i < ar.length ; i++) {
-            temp[i]=ar[i];
-        }
-        for (int i = k; i < ar.length-k ; i++) {
-            
-        }
-        return ar;
-    }
-    static int[] moveAllZeros(int ar[]){
-        for (int i = 0; i < ar.length; i++) {
-            if (ar[i]!=0)D.intArrayList.add(ar[i]);
+    static int[] moveAllZeros(int[] ar){
+        for (int j : ar) {
+            if (j != 0) D.intArrayList.add(j);
         }
         for (int i = D.intArrayList.size(); i <ar.length ; i++) {
             D.intArrayList.add(0);
         }
         return ar;
     }
-    static int missingNumber(int ar[]){
+    static int missingNumber(int[] ar){
         for (int i = 1; i <= ar.length; i++) {
             if (ar[i]!=ar[i-1]+1)return ar[i]-1;
         }
         return -1;
     }
-    static int consecutiveOnes(int ar[]){
+    static int consecutiveOnes(int[] ar){
         int count = 0;
         int maxCount = 0;
-        for (int i = 0; i < ar.length; i++) {
-            if (ar[i]==1)count++;
-            else count=0;
-            maxCount=Math.max(count,maxCount);
+        for (int j : ar) {
+            if (j == 1) count++;
+            else count = 0;
+            maxCount = Math.max(count, maxCount);
         }
         return maxCount;
     }
-    static int appearsOnce(int ar[]){
-        for (int i = 0; i < ar.length; i++) {
-            if (!D.intHashMap.containsKey(ar[i]))D.intHashMap.put(ar[i],1);
-            else D.intHashMap.put(ar[i], D.intHashMap.get(ar[i]) + 1);
+    static int appearsOnce(int[] ar){
+        for (int j : ar) {
+            if (!D.intHashMap.containsKey(j)) D.intHashMap.put(j, 1);
+            else D.intHashMap.put(j, D.intHashMap.get(j) + 1);
         }
         for (int key : D.intHashMap.keySet()) {
             if (D.intHashMap.get(key) == 1) {
@@ -113,17 +105,17 @@ public class ArrayEasy {
         }
         return -1;
     }
-    static int[] twoSum(int ar[],int target){
+    static int[] twoSum(int[] ar, int target){
         for (int i = 0; i < ar.length; i++) {
-            for (int j = 0; j < ar.length; j++) {
+            for (int j = i+1; j < ar.length; j++) {
                 if (ar[i]+ar[j]==target)return new int[]{i,j};
             }
         }
         return new int[]{};
     }
-    static boolean twoSum(int target,int ar[]){
+    static boolean twoSum(int target, int[] ar){
         for (int i = 0; i < ar.length; i++) {
-            for (int j = 0; j < ar.length; j++) {
+            for (int j = i+1; j < ar.length; j++) {
                 if (ar[i]+ar[j]==target)return true;
             }
         }
