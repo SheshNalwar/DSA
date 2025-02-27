@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ArrayEasy {
     public static void main(String[] args) {
-        System.out.println(appearsOnce(D.appears));
+
     }
 
 //    Methods
@@ -111,5 +112,21 @@ public class ArrayEasy {
             }
         }
         return -1;
+    }
+    static int[] twoSum(int ar[],int target){
+        for (int i = 0; i < ar.length; i++) {
+            for (int j = 0; j < ar.length; j++) {
+                if (ar[i]+ar[j]==target)return new int[]{i,j};
+            }
+        }
+        return new int[]{};
+    }
+    static boolean twoSum(int target,int ar[]){
+        for (int i = 0; i < ar.length; i++) {
+            for (int j = 0; j < ar.length; j++) {
+                if (ar[i]+ar[j]==target)return true;
+            }
+        }
+        return false;
     }
 }
