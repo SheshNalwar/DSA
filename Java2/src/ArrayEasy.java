@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class ArrayEasy {
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(sortArray(D.sorte)));
+        System.out.println(Arrays.toString(reArrange(D.rearrange)));
     }
 
 //    Methods
@@ -153,5 +153,23 @@ public class ArrayEasy {
         }
         return false;
     }
-
+    static int[] reArrange(int[] ar){
+        ArrayList<Integer>positives=new ArrayList<>();
+        ArrayList<Integer>negatives=new ArrayList<>();
+        for (int i = 0; i < ar.length; i++) {
+            if (ar[i]>0)positives.add(ar[i]);
+            else negatives.add(ar[i]);
+        }
+        int posIndex = 0, negIndex = 0;
+        for (int i = 0; i < ar.length; i++) {
+            if (i % 2 == 0 && posIndex < positives.size()) {
+                ar[i] = positives.get(posIndex++);
+            } else if (negIndex < negatives.size()) {
+                ar[i] = negatives.get(negIndex++);
+            } else if (posIndex < positives.size()) {
+                ar[i] = positives.get(posIndex++);
+            }
+        }
+        return ar;
+    }
 }
