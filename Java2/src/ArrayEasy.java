@@ -3,10 +3,7 @@ import java.util.Arrays;
 
 public class ArrayEasy {
     public static void main(String[] args) {
-        for(int num:D.ar2){
-            int current = D.intHashMap.getOrDefault(num,1);
-            System.out.println(current);
-        }
+        System.out.println(Arrays.toString(sortArray(D.sorte)));
     }
 
 //    Methods
@@ -105,6 +102,21 @@ public class ArrayEasy {
         }
         return -1;
     }
+    static int appearsOnce2(int[] ar){
+        for(int num:ar){
+            if (!D.intHashMap.containsKey(num))D.intHashMap.put(num,1);
+            else {
+                int count = D.intHashMap.getOrDefault(num,1);
+                D.intHashMap.put(num,count+1);
+            }
+        }
+        for (int key:D.intHashMap.keySet()){
+            if (D.intHashMap.get(key)==1){
+                return key;
+            }
+        }
+        return -1;
+    }
     static int[] twoSum(int[] ar, int target){
         for (int i = 0; i < ar.length; i++) {
             for (int j = i+1; j < ar.length; j++) {
@@ -112,6 +124,26 @@ public class ArrayEasy {
             }
         }
         return new int[]{};
+    }
+    static int[] sortArray(int[] ar){
+        int zero=0;
+        int ones=0;
+        int twos=0;
+        for(int num:ar){
+            if (num==0)zero++;
+            if (num==1)ones++;
+            if (num==2)twos++;
+        }
+        for (int i = 0; i < zero; i++) {
+            ar[i]=0;
+        }
+        for (int i = zero; i <zero+ones ; i++) {
+            ar[i]=1;
+        }
+        for (int i = zero+ones; i <zero+ones+twos ; i++) {
+            ar[i]=2;
+        }
+        return ar;
     }
     static boolean twoSum(int target, int[] ar){
         for (int i = 0; i < ar.length; i++) {
@@ -121,4 +153,5 @@ public class ArrayEasy {
         }
         return false;
     }
+
 }
